@@ -90,8 +90,6 @@ class CategoryAdapter (val items:MutableList<CategoryModel>):
                val intent = Intent(holder.itemView.context,ListItemsActivity::class.java).apply {
                    putExtra("id", item.id.toString())
                    putExtra("title", item.title)
-
-
                }
                ContextCompat.startActivity(holder.itemView.context,intent,null)
            },1000)

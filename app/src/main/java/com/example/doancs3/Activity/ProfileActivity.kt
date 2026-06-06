@@ -62,9 +62,9 @@ class ProfileActivity : BaseActivity() {
         if (userId != null) {
             FirebaseDatabase.getInstance().getReference("Users/$userId")
                 .get().addOnSuccessListener { snapshot ->
-                    val name = snapshot.child("profile_name").getValue(String::class.java) ?: tinyDB.getString("profile_name") ?: "Quang Huy"
-                    val address = snapshot.child("address").getValue(String::class.java) ?: tinyDB.getString("profile_address") ?: ""
-                    val phone = snapshot.child("phone").getValue(String::class.java) ?: tinyDB.getString("profile_phone") ?: ""
+                    val name = snapshot.child("profile_name").getValue(String::class.java) ?: ""
+                    val address = snapshot.child("address").getValue(String::class.java) ?:  ""
+                    val phone = snapshot.child("phone").getValue(String::class.java) ?:  ""
                     binding.nameEditTxt.setText(name)
                     binding.emailAddress.setText(address)
                     binding.phoneEditTxt.setText(phone)
@@ -77,9 +77,12 @@ class ProfileActivity : BaseActivity() {
                     Toast.makeText(this, "Failed to load profile", Toast.LENGTH_SHORT).show()
                 }
         } else {
-            binding.nameEditTxt.setText(tinyDB.getString("profile_name") ?: "Quang Huy")
-            binding.emailAddress.setText(tinyDB.getString("profile_address") ?: "")
-            binding.phoneEditTxt.setText(tinyDB.getString("profile_phone") ?: "")
+//            binding.nameEditTxt.setText(tinyDB.getString("profile_name") ?: "Quang Huy")
+//            binding.emailAddress.setText(tinyDB.getString("profile_address") ?: "")
+//            binding.phoneEditTxt.setText(tinyDB.getString("profile_phone") ?: "")
+            binding.nameEditTxt.setText("")
+            binding.emailAddress.setText("")
+            binding.phoneEditTxt.setText("")
         }
     }
 

@@ -126,7 +126,8 @@ class MainActivity : BaseActivity() {
         if (userId != null) {
             FirebaseDatabase.getInstance().getReference("Users/$userId/profile_name")
                 .get().addOnSuccessListener { snapshot ->
-                    val profileName = snapshot.getValue(String::class.java) ?: tinyDB.getString("profile_name") ?: "Khách hàng thân mến"
+                  //  val profileName = snapshot.getValue(String::class.java) ?: tinyDB.getString("profile_name") ?: "Khách hàng thân mến"
+                    val profileName = snapshot.getValue(String::class.java) ?: "Khách hàng thân mến"
                     tinyDB.putString("profile_name", profileName)
                     binding.nametitle.text = profileName
                     Log.d(TAG, "Profile name loaded: $profileName")
